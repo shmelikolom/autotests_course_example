@@ -6,11 +6,11 @@
 
 
 def flatten_and_sort(array):
-    # Здесь нужно написать код
     result_list = []
     for mass in array:
         result_list.extend(mass)
     result_list.sort()
+
     return result_list
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

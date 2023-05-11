@@ -8,7 +8,6 @@
 # 4 --> 0 (4 уже одна цифра, а значит мы проделали 0 итераций)
 
 def multiplication_chain(num):
-    # Здесь нужно написать код
     our_multy = 1
     count_multy = 0
     lst = list(map(int, str(num)))
@@ -18,6 +17,7 @@ def multiplication_chain(num):
         lst = list(map(int, str(our_multy)))
         count_multy += 1
         our_multy = 1
+
     return count_multy
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

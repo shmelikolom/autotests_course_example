@@ -5,7 +5,6 @@
 # Например 1, 1, 1 --> "Равносторонний"
 
 def which_triangle(a, b, c):
-    # Здесь нужно написать код
     if 2 * max(a, b, c) >= a + b + c:
         type_triangle = "Не треугольник"
     elif a == c == b:
@@ -14,6 +13,7 @@ def which_triangle(a, b, c):
         type_triangle = "Равнобедренный"
     else:
         type_triangle = "Обычный"
+
     return type_triangle
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
