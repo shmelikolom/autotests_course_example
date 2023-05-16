@@ -22,7 +22,7 @@ def everything_for_your_cat(cats_data):
     # Здесь нужно написать код
     dict_cat = {}  # Задаем словарь котов
     for name_cat, age, name, family in cats_data:  # Проходим по записям в книге о котах
-        fio = name + ' ' + family + ': ' # Задем папметр ключа словаря "Имя + Фамилия: "
+        fio = name + ' ' + family + ': '  # Задем папметр ключа словаря "Имя + Фамилия: "
         if dict_cat.get(fio):  # Проверяем если в словаре запись о хозяене
             # Если запись есть, то добавлем новго кота в запись
             dict_cat.update({fio: dict_cat.get(fio) + ['; ' + name_cat + ', ', age]})
