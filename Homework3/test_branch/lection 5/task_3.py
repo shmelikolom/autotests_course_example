@@ -29,7 +29,7 @@ def everything_for_your_cat(cats_data):
             dict_cat.update({fio: [name_cat + ', ', age]})
     our_str = ''  # Задаем строку для возврата значений
     for family_name, cats in dict_cat.items():  # Проходим по словарю котов
-        our_str = our_str + family_name + ''.join(map(str, cats)) + '\n'  # Записываем в строку хозяина и всех его котов
+        our_str += family_name + ''.join(map(str, cats)) + '\n'  # Записываем в строку хозяина и всех его котов
     return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
