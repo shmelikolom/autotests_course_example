@@ -19,7 +19,6 @@
 
 
 def everything_for_your_cat(cats_data):
-    # Здесь нужно написать код
     dict_cat = {}  # Задаем словарь котов
     for name_cat, age, name, family in cats_data:  # Проходим по записям в книге о котах
         fio = name + ' ' + family + ': '  # Задем папметр ключа словаря "Имя + Фамилия: "

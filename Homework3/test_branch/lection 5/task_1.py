@@ -8,7 +8,6 @@
 
 def letter_stat(our_str):
     letters_dict = {j: our_str.count(j) for j in our_str}  # Словарь сотоящий из букв и количества их вхождений в строку
-    # Здесь нужно написать код
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

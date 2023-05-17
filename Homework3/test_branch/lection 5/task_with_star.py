@@ -11,7 +11,7 @@
 
 
 def to_roman(val):
-    point_dict = {1000: 'M',  # Задаем список римских цифр
+    point_dict = {1000: 'M',  # Задаем словарь римских цифр
                   900: 'CM',
                   500: 'D',
                   400: 'CD',
@@ -25,11 +25,10 @@ def to_roman(val):
                   4: 'IV',
                   1: 'I'}
     roman_str = ''   # Задаем строку для возврата значений
-    for arabic_num, roman_num in point_dict.items():  # Проходим по списку римских цифр
+    for arabic_num, roman_num in point_dict.items():  # Проходим по словарю римских цифр
         roman_count = val // arabic_num  # Определеяем сколько раз записываем римскую цифру
         roman_str += roman_count*roman_num  # Записываем рискую цифру в строку
         val -= arabic_num * roman_count  # Удлаяем из исходного числа занчение римской цифры которое уже записали
-    # Здесь нужно написать код
     return roman_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

@@ -26,7 +26,6 @@ def scrabble(word):
     word_dict = {j: word.count(j) for j in word}  # Словарь сотоящий из букв и количества их вхождений в строку
     for letter, count_letters in word_dict.items():  # Цикл по словорю букв
         points += count_letters * next(ch for ch, code in point_dict.items() if code.count(letter))  # Подсчет очков
-    # Здесь нужно написать код
     return points
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
