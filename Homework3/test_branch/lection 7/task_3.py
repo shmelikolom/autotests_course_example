@@ -52,10 +52,8 @@ class Bus(PublicTransport):
 
     @park.setter
     def park(self, park):  # Функция Set (задание занчения) параметра park
-        if 9999 >= park >= 1000:  # Если новове значение находится в диапазоне от 1000 до 9999
-            self.__park = park  # Записываем новове значение в параметр park
-        else:  # Если новое значение не находится в диапазоне от 1000 до 9999, бросаем ошибку AssertionError
-            raise AssertionError
+        assert 9999 >= park >= 1000  # Проверка что новое значение park входит в диапазон  от 1000 до 9999
+        self.__park = park  # Записываем новове значение в параметр park
 
 
 class Tram(PublicTransport):
