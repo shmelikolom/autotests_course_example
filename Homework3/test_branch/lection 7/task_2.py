@@ -54,7 +54,7 @@ class PersonInfo:
             Имя и Фамилия сотрудника
         age: int
             Возраст сотрудника
-        *department: typle
+        *department: str
             Подразделения от головного до того, где работает сотрудник
         """
         self.name, self.surname = name_surname.split(' ')
