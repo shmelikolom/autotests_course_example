@@ -14,7 +14,6 @@
 # [4] => 1 вышел, 4 остался последним т.е. выжившим - это наш ответ survivor.
 
 def josephus_task(num_people, kill_num):
-    # Здесь нужно написать код
     num_people_lst = list(range(1, num_people+1))
     while len(num_people_lst) > 1:
         if kill_num % len(num_people_lst) != len(num_people_lst) and kill_num % len(num_people_lst) != 0:

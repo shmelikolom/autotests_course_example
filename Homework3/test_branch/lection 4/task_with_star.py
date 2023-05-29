@@ -12,7 +12,6 @@
 # 4974 --> 7974
 
 def max_division_by_3(num):
-    # Здесь нужно написать код
     num_list = list(map(int, str(num)))
     remainder_division_three = 3-num % 3
     for j in range(len(num_list)):

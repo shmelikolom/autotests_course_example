@@ -7,8 +7,8 @@
 # 4 --> 4
 
 def sum_digits(num):
-    # Здесь нужно написать код
     our_sum = sum(map(int, str(num)))
+
     return our_sum
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
