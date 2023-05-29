@@ -45,7 +45,7 @@ class PersonInfo:
         1337*Возраст*суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений
     """
 
-    def __init__(self, name_surname: str, age: int, *department: tuple) -> None:
+    def __init__(self, name_surname: str, age: int, *department: str) -> None:
         """Устанавливает все необходимые атрибуты для объекта PersonInfo
 
         Параметры
