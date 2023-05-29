@@ -17,7 +17,7 @@
 import unittest  # Не удалять
 
 
-def treatment_sum(our_tuple: tuple) -> float:
+def treatment_sum(our_tuple: tuple):
     """Сложение двух элементов
 
     Параметры
