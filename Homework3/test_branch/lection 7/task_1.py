@@ -10,30 +10,53 @@
 # Segment((-2, -3), (4, -5)).y_axis_intersection() --> False
 
 # Здесь пишем код
-import numpy  # Импортир модуль numpy для методов вычесления квадрата и корня
+import numpy
 
 
-class Segment:  # Класс segment которой хранить отрезок
+class Segment:
+    """Класс для работы с отрезками.
 
-    def __init__(self, point1, point2):  # Инициализируем занчения x1/x2/y1/y2 по переданным точкам
+    Атрибуты
+    --------
+    x1: int
+        Марка транспорта
+    y1: int
+        Мощность двигателя
+    x2: int
+        Год выпуска
+    y2: int
+        Цвет
+    """
+    def __init__(self, point1: tuple, point2: tuple) -> None:
+        """Устанавливает все необходимые атрибуты для объекта Segment
+
+        Параметры
+        ---------
+        point1: tuple
+            координаты точки 1
+        point2: tuple
+            координаты точки 2
+        """
         self.x1 = point1[0]
         self.y1 = point1[1]
         self.x2 = point2[0]
         self.y2 = point2[1]
 
-    def length(self):  # Метод для вычиления длины отрезка
+    def length(self) -> float:
+        """Возвращает длину нашего отрезка, с округлением до 2 знаков после запятой"""
         return round(numpy.sqrt(numpy.square(self.x1 - self.x2) + numpy.square(self.y1 - self.y2)), 2)
 
-    def x_axis_intersection(self):  # Метод проверки пересения отрезка и оси абцисс
+    def x_axis_intersection(self) -> bool:
+        """Возвращает True, если отрезок пересекает ось абцисс, иначе False"""
         return self.x1 * self.x2 <= 0
 
-    def y_axis_intersection(self):  # Метод проверки пересения отрезка и оси ординат
+    def y_axis_intersection(self) -> bool:
+        """Возвращает True, если отрезок пересекает ось ординат, иначе False"""
         return self.y1 * self.y2 <= 0
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
-
-
+help(Segment)
 data = [Segment((2, 3), (4, 5)).length,
         Segment((1, 1), (1, 8)).length,
         Segment((0, 0), (0, 1)).length,

@@ -25,8 +25,38 @@
 
 # Здесь пишем код
 class PublicTransport:
+    """Класс для представления информации о транспортном средстве.
 
-    def __init__(self, brand, engine_power, year, color, max_speed):  # Инициализируем занчения
+    Атрибуты
+    --------
+    brand: str
+        Марка транспорта
+    (protected)engine_power: int
+        Мощность двигателя
+    year: int
+        Год выпуска
+    color: str
+        Цвет
+    max_speed: str
+        Максимальная скорость
+    """
+
+    def __init__(self, brand: str, engine_power: int, year: int, color: str, max_speed: int) -> None:
+        """Устанавливает все необходимые атрибуты для объекта PublicTransport
+
+        Параметры
+        ---------
+        brand: str
+            Марка транспорта
+        engine_power: int
+            Мощность двигателя
+        year: int
+            Год выпуска
+        color: str
+            Цвет
+        max_speed: str
+            Максимальная скорость
+        """
         self.brand = brand
         self._engine_power = engine_power
         self.year = year
@@ -34,38 +64,127 @@ class PublicTransport:
         self.max_speed = max_speed
 
     @property
-    def info(self):  # Функция возращения информации о машине
+    def info(self) -> str:
+        """Возвращает информацию о марке, цвете, годе выпуска и мощности двигателя"""
         return f'Марка: {self.brand}\nЦвет: {self.color}\nГод: {self.year}\nМощность двигателя: {self._engine_power}'
 
 
 class Bus(PublicTransport):
+    """Класс для представления информации о Автобусе, является наследником класса PublicTransport.
 
-    def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):  # Инициализируем занчения
-        super().__init__(brand, engine_power, year, color, max_speed)  # Инициализируем занчения родительского класса
+    Атрибуты
+    --------
+    brand: str
+        Марка транспорта
+    (protected)engine_power: int
+        Мощность двигателя
+    year: int
+        Год выпуска
+    color: str
+        Цвет
+    max_speed: str
+        Максимальная скорость
+    passengers: int
+        кол-во пассажиров
+    (private)park: int
+        Номер парка
+    (protected)fare: int
+        Стоимость проезда
+    """
+    def __init__(self, brand: str, engine_power: int, year: int, color: str, max_speed: int,
+                 passengers: int, park: int, fare: int) -> None:
+        """Устанавливает все необходимые атрибуты для объекта Bus
+
+        Параметры
+        ---------
+        brand: str
+            Марка транспорта
+        (protected)engine_power: int
+            Мощность двигателя
+        year: int
+            Год выпуска
+        color: str
+            Цвет
+        max_speed: str
+            Максимальная скорость
+        passengers: int
+            кол-во пассажиров
+        park: int
+            Номер парка
+        fare: int
+            Стоимость проезда
+        """
+        super().__init__(brand, engine_power, year, color, max_speed)
         self.passengers = passengers
         self.__park = park
         self._fare = fare
 
     @property
-    def park(self):  # Функция Get(возвращение занчения) параметра park
+    def park(self) -> int:
+        """Возвращает номер парка автобуса"""
         return self.__park
 
     @park.setter
-    def park(self, park):  # Функция Set (задание занчения) параметра park
-        assert 9999 >= park >= 1000  # Проверка что новое значение park входит в диапазон  от 1000 до 9999
-        self.__park = park  # Записываем новове значение в параметр park
+    def park(self, park):
+        """Проверяет что новое значение номера парка находится в диапозоне от 1000 до 9999,
+        если да, то записывает его"""
+        assert 9999 >= park >= 1000
+        self.__park = park
 
 
 class Tram(PublicTransport):
+    """Класс для представления информации о трамвае, является наследником класса PublicTransport.
 
-    def __init__(self, brand, engine_power, year, color, max_speed, route, path, fare):  # Инициализируем занчения
-        super().__init__(brand, engine_power, year, color, max_speed)  # Инициализируем занчения родительского класса
+    Атрибуты
+    --------
+    brand: str
+        Марка транспорта
+    (protected)engine_power: int
+        Мощность двигателя
+    year: int
+        Год выпуска
+    color: str
+        Цвет
+    max_speed: str
+        Максимальная скорость
+    (private)route: int
+        Маршрут трамвая
+    path: int
+        Длина маршрута
+    (protected)fare: int
+        Стоимость проезда
+    """
+    def __init__(self, brand: str, engine_power: int, year: int, color: str, max_speed: int,
+                 route: int, path: int, fare: int) -> None:
+        """Устанавливает все необходимые атрибуты для объекта Tram
+
+        Параметры
+        ---------
+        brand: str
+                Марка транспорта
+        (protected)engine_power: int
+            Мощность двигателя
+        year: int
+            Год выпуска
+        color: str
+            Цвет
+        max_speed: str
+            Максимальная скорость
+        route: int
+            Маршрут трамвая
+        path: int
+            Длина маршрута
+        fare: int
+            Стоимость проезда
+        """
+        super().__init__(brand, engine_power, year, color, max_speed)
         self.__route = route
         self.path = path
         self._fare = fare
 
     @property
-    def how_long(self):   # Функция вычисления времи прохождение маршрута
+    def how_long(self) -> float:
+        """Возвращает время за которое трамвай проходит маршрут"""
         return self.max_speed/(4*self.path)
 
 

@@ -20,30 +20,64 @@
 # PersonInfo('Александр Шленский', 32, 'Разработка', 'УК', 'Автотесты').new_salary() --> 385056 т.к.
 # т.к. буква "т" встречается 4 раза, "а" 3 раза, 'о' 2 раза, остальные по одной. Сумма трёх самых частых букв 4+3+2 = 9.
 # 1337*32*9 = 385056
-class PersonInfo:  # Класс PersonInfo которой хранить информацию о сотруднике Имя Фамилия/возраст/подразделение
+class PersonInfo:
+    """Класс для представления информации о сотруднике.
 
-    def __init__(self, family_name, age, *department):  # Инициализируем занчения
-        self.family_name = family_name
+    Атрибуты
+    --------
+    name : str
+        Имя сотрудника
+    surname : str
+        Фамилия сотрудника
+    age : int
+        Возраст сотрудника
+    department: tuple
+        Подразделения от головного до того, где работает сотрудник
+
+    Методы
+    ------
+    short_name():
+        Возвращает Фимилию И. сотрудника.
+    path_deps():
+        Возвращает путь Головное подразделение --> ... --> Конечное подразделение
+    new_salary()
+        Возрашает новую зарплату сотрудника, рассчитанную по формуле:
+        1337*Возраст*суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений
+    """
+
+    def __init__(self, name_surname: str, age: int, *department: tuple) -> None:
+        """Устанавливает все необходимые атрибуты для объекта PersonInfo
+
+        Параметры
+        ---------
+        family_name: str
+            Имя и Фамилия сотрудника
+        age: int
+            Возраст сотрудника
+        *department: typle
+            Подразделения от головного до того, где работает сотрудник
+        """
+        self.name, self.surname = name_surname.split(' ')
+        self.family_name = name_surname
         self.age = age
-        self.department = [*department]
+        self.department = department
 
-    def short_name(self):  # Метод возращающий Фамилия И. сотрудника
-        return self.family_name[self.family_name.find(' ')+1:] + ' ' + self.family_name[0] + '.'
+    def short_name(self) -> str:
+        """Возвращает Фимилию И. сотрудника"""
+        return self.surname + ' ' + self.name[0] + '.'
 
-    def path_deps(self):  # Метод возращающий подразделение сотрудника
-        return ' --> '.join(map(str, self.department))
+    def path_deps(self) -> str:
+        """Возвращает путь Головное подразделение --> ... --> Конечное подразделение"""
+        return ' --> '.join(self.department)
 
-    def new_salary(self):  # Метод расчета индексации для сотрудника
-        department_str = ''.join(map(str, self.department))  # Записываем подразделения сотрудника в одну сторку
-        # Вычисляем количество повтороенйи для каждой буквы
+    def new_salary(self) -> int:
+        """Возрашает новую зарплату сотрудника, рассчитанную по формуле:
+        1337*Возраст*суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений"""
+        department_str = ''.join(self.department)
         list_count_letters = sorted([department_str.count(j) for j in set(department_str)], reverse=True)
         if len(list_count_letters) > 3:
-            # если в подразделении больше 3 уникальных букв, то при прасчете индексации сумируем кол-во вхождений
-            # трех наиболее часто встречающихся букв
             return 1337 * self.age * sum(list_count_letters[0:3])
         else:
-            # если в подразделении меньше 3 уникальных букв, то при расчете индексации сумируем кол-во вхождений
-            # всех букв
             return 1337 * self.age * sum(list_count_letters)
 # Здесь пишем код
 

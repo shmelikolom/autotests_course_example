@@ -10,6 +10,15 @@
 
 # Здесь пишем код
 class RomanNums:
+    """Класс для работы с римскими числами
+
+       Атрибуты
+       --------
+       arabic_roman_dict : dict
+           Словарь соответсвия римских цифр и арабских чисел
+       roman_num : str
+           Римское число
+       """
     arabic_roman_dict = {1000: 'M',  # Задаем словарь римских цифр
                          900: 'CM',
                          500: 'D',
@@ -24,32 +33,41 @@ class RomanNums:
                          4: 'IV',
                          1: 'I'}
 
-    def __init__(self, roman_num):  # Инициализируем занчения
+    def __init__(self, roman_num: str) -> None:
+        """Устанавливает все необходимые атрибуты для объекта RomanNums
+
+        Параметры
+        ---------
+        roman_num: str
+            Римское число
+        """
         self.roman_num = roman_num
 
-    def from_roman(self):  # Функция перевода римского числа в арабское
-        arabic_num = 0  # Задаем начальное занчение арабского числа равным 0
-        j = 0  # Задаем праметр для посимольного прохода по римскому числу
-        for arabic, roman in self.arabic_roman_dict.items():  # Проходим по словарю римских цифр
-            while j < len(self.roman_num):  # Цикл для прохода по римскому числу
-                if self.roman_num[j] == roman:  # Если сивол в строке совпадает со значением в словаре то
-                    arabic_num += arabic  # Увеличиваем занчение арабского числа
-                    j += 1  # увеличиваем занчнеие праметра посимольного прохода на 1
-                elif self.roman_num[j:j+2] == roman:  # Условие для преоверки 4/9/40/90/400/900
-                    arabic_num += arabic  # Увеличиваем занчение арабского числа
-                    j += 2  # увеличиваем занчнеие праметра посимольного прохода на 2
-                else:  # Если совпадение не найденно, то выходим из цикла  прохода по римскому числу
+    def from_roman(self) -> int:
+        """Переводит римскую запись числа в арабскую и возвращает его."""
+        arabic_num = 0
+        j = 0
+        for arabic, roman in self.arabic_roman_dict.items():
+            while j < len(self.roman_num):
+                if self.roman_num[j] == roman:
+                    arabic_num += arabic
+                    j += 1
+                elif self.roman_num[j:j+2] == roman:
+                    arabic_num += arabic
+                    j += 2
+                else:
                     break
         return arabic_num
 
-    def is_palindrome(self):  # Функция проверки числа палиндромом
-        # Переводим число в арабское, раскладываем его и записываем в сисок
+    def is_palindrome(self) -> bool:
+        """Определяет, является ли арабское число палиндромом.
+           Возвращает True - если число является палиндромом, иначе False"""
         list_arabic_num = list(map(int, str(self.from_roman())))
-        for j in range(len(list_arabic_num)//2):  # Цикол прохода пополовине индексов полученного списка
-            if list_arabic_num[j] == list_arabic_num[-j - 1]:  # Если противоположные значения списка сопадают
-                continue  # Переходим к следующему индексу
-            else:  # Если противоположные значения списка не сопадают
-                return False  # Завершаем функцию и возращаем flase
+        for j in range(len(list_arabic_num)//2):
+            if list_arabic_num[j] == list_arabic_num[-j - 1]:
+                continue
+            else:
+                return False
         return True
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
