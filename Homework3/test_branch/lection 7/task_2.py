@@ -57,14 +57,18 @@ class PersonInfo:
         *department: str
             Подразделения от головного до того, где работает сотрудник
         """
-        self.name, self.surname = name_surname.split(' ')
+        self.fio_list = name_surname.split(' ')
+        assert len(self.fio_list) == 2, 'Некорректная запись ФИО. Необходим формат -> "Фамилия Имя"'
         self.family_name = name_surname
         self.age = age
         self.department = department
+        for j in self.department:
+            assert type(j) == str, 'Некорректная запись в подразделениях. ' \
+                                   f'Подразделение "{j}" должны быть указаны в виде строки'
 
     def short_name(self) -> str:
         """Возвращает Фимилию И. сотрудника"""
-        return self.surname + ' ' + self.name[0] + '.'
+        return self.fio_list[1] + ' ' + self.fio_list[0][0] + '.'
 
     def path_deps(self) -> str:
         """Возвращает путь Головное подразделение --> ... --> Конечное подразделение"""
