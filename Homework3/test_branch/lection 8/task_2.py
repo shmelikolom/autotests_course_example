@@ -24,7 +24,7 @@ class Trigon:
     triangle: tuple
         Кортеж со сторонами треугольника
     """
-    def __init__(self, *triangle):
+    def __init__(self, *triangle: float) -> None:
         """Устанавливает все необходимые атрибуты для объекта Trigon
 
         Параметры
