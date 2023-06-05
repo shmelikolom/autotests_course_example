@@ -6,13 +6,13 @@
 # Здесь пишем код
 list_purchases = []
 purchases = 0
-with open("test_file/task_3.txt", 'r', encoding='utf-8') as task_3:
-    for i in task_3:
-        try:
-            purchases += int(i)
-        except ValueError:
-            list_purchases.append(purchases)
+with open("test_file/task_3.txt", 'r', encoding='utf-8') as task_3:  # Открытие файла на чтение
+    for line in task_3:
+        if line != '\n':  # Провека на разделитель покупок
+            purchases += int(line)  # Увеличиваем сумму покупки на цену
+        else:
+            list_purchases.append(purchases)  # Записываем окончательную сумму в список
             purchases = 0
-list_purchases.sort()
-three_most_expensive_purchases = sum(list_purchases[-3:])
+list_purchases.sort()  # Сортировка списка по возростанию
+three_most_expensive_purchases = sum(list_purchases[-3:])  # Суммируем три последнии занчниея списка
 assert three_most_expensive_purchases == 202346
