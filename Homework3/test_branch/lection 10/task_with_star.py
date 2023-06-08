@@ -9,5 +9,4 @@ import pytest
 def test(request):
     # Здесь пишем код
     mark = next(request.node.iter_markers())
-    print(mark.args)
-    pass
+    print(*mark.args, sep=', ')
